@@ -20,8 +20,7 @@ const Route = use('Route')
 Route.group(() => {
     Route.post('usuarios/registros', 'UserController.store');
     Route.post('usuarios/login', 'UserController.login');
-    Route.get('login/google', 'LoginController.redirect');
-    Route.get('google/callback', 'LoginController.callback');
+    Route.patch('usuarios/:id', 'UserController.update').middleware('auth');
     //Rutas de los proyectos 
     Route.get('proyectos', 'ProyectoController.index').middleware('auth');
     Route.post('proyectos', 'ProyectoController.create').middleware('auth');

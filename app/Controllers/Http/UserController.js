@@ -18,6 +18,14 @@ class UserController {
         });
         return user;
     };
+
+    async update({ params, request }) {
+        const { id } = params;
+        const usernam = await User.find(id);
+        usernam.merge(request.only('username'));
+        await usernam.save();
+        return usernam;
+    };
 }
 
 module.exports = UserController
